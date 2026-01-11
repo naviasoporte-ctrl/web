@@ -3,37 +3,297 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>NavIA — Tiempo y mar en tu bolsillo</title>
-  <meta name="description" content="NavIA te ayuda a planificar salidas al mar y actividades en la costa con previsión meteorológica y condiciones marítimas en una interfaz clara y rápida." />
-
-  <!-- SEO -->
-  <meta name="keywords" content="meteo,tiempo,mar,oleaje,viento,olas,navegacion,playa,puerto,vela,kitesurf,surf,barco,gps" />
+  <meta name="description" content="NavIA te ayuda a planificar salidas al mar y actividades en la costa con información meteorológica y marítima en una interfaz clara y rápida." />
+  <link rel="icon" href="./icon.png" />
 
   <!-- Open Graph (opcional) -->
   <meta property="og:title" content="NavIA — Tiempo y mar en tu bolsillo" />
-  <meta property="og:description" content="Previsión meteorológica y condiciones marítimas en un solo lugar: viento, rachas, oleaje, mapas, webcams, GPS y favoritos." />
+  <meta property="og:description" content="Viento, rachas, oleaje, mapas y webcams. Todo claro y rápido." />
   <meta property="og:type" content="website" />
-
-  <!-- Favicon: usa tu logo -->
-  <link rel="icon" href="icon.png" />
 
   <style>
     :root{
-      --bg0:#061826;
-      --bg1:#071f33;
-      --card:rgba(255,255,255,.08);
-      --card2:rgba(255,255,255,.06);
-      --border:rgba(255,255,255,.14);
-      --text:#eaf4ff;
-      --muted:rgba(234,244,255,.78);
-      --muted2:rgba(234,244,255,.62);
-      --brand:#3bb9ff;
-      --brand2:#2dd4bf;
-      --shadow: 0 18px 55px rgba(0,0,0,.45);
-      --radius: 18px;
-      --radius2: 22px;
-      --max: 1120px;
+      --bg:#ffffff;
+      --text:#0b1b2b;
+      --muted:#47647a;
+      --line:#e7eef6;
+      --blue:#1677ff;
+      --blue2:#15b8d6;
+      --card:#ffffff;
+      --shadow: 0 18px 45px rgba(10, 30, 50, .10);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a{color:inherit}
+    .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto;}
+    header{
+      position:sticky; top:0; z-index:20;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; text-decoration:none;}
+    .brand img{width:34px; height:34px; border-radius:10px; box-shadow: 0 10px 22px rgba(0,0,0,.10);}
+    .navlinks{display:flex; gap:16px; color:var(--muted); font-weight:700; font-size:.95rem;}
+    .navlinks a{text-decoration:none}
+    .navlinks a:hover{color: var(--text);}
+
+    .hero{padding:56px 0 22px;}
+    .heroGrid{display:grid; grid-template-columns: 1.05fr .95fr; gap:28px; align-items:center;}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      border:1px solid var(--line);
+      background: linear-gradient(90deg, rgba(22,119,255,.08), rgba(21,184,214,.06));
+      padding:8px 12px; border-radius:999px;
+      color: var(--muted); font-weight:800; font-size:.92rem;
+    }
+    h1{font-size: clamp(2.0rem, 3.4vw, 3.0rem); line-height:1.07; margin:14px 0 12px; letter-spacing:-.4px;}
+    .lead{color:var(--muted); font-size:1.07rem; line-height:1.55; margin:0 0 18px; max-width: 62ch;}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; align-items:center;}
+    .btn{
+      display:inline-flex; gap:10px; align-items:center; justify-content:center;
+      padding:12px 14px; border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      text-decoration:none; font-weight:900;
+      box-shadow: 0 12px 26px rgba(10,30,50,.08);
+      transition: transform .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      border: none;
+      color:#fff;
+      background: linear-gradient(90deg, var(--blue), var(--blue2));
+      box-shadow: 0 16px 35px rgba(22,119,255,.20);
+    }
+    .btn.disabled{opacity:.55; cursor:not-allowed; pointer-events:none}
+
+    .phone{
+      border:1px solid var(--line);
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .phone .tag{
+      position:absolute; top:12px; left:12px;
+      display:flex; gap:10px; align-items:center;
+      padding:8px 10px; border-radius:999px;
+      background: rgba(255,255,255,.85);
+      border:1px solid var(--line);
+      font-weight:900; color: var(--text);
+    }
+    .phone .tag img{width:22px; height:22px; border-radius:8px;}
+    .phone img{width:100%; height:auto; display:block;}
+
+    section{padding:44px 0;}
+    .title{font-size:1.55rem; margin:0 0 10px; letter-spacing:-.2px;}
+    .sub{margin:0 0 18px; color:var(--muted); line-height:1.55; max-width: 75ch;}
+
+    .grid{display:grid; gap:14px;}
+    .features{grid-template-columns: repeat(3, 1fr);}
+    .card{
+      border:1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 10px 22px rgba(10,30,50,.06);
+      min-height: 120px;
+    }
+    .card h3{margin:0 0 6px; font-size:1.05rem;}
+    .card p{margin:0; color:var(--muted); line-height:1.5;}
+
+    .shots{grid-template-columns: repeat(5, 1fr); gap:12px;}
+    .shot{
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 10px 22px rgba(10,30,50,.06);
+      cursor: zoom-in;
+    }
+    .shot img{width:100%; height:100%; object-fit:cover; display:block;}
+
+    /* Footer estilo Apple-like, fondo blanco */
+    footer{
+      border-top: 1px solid var(--line);
+      background:#fff;
+      padding: 26px 0 42px;
+      color: var(--muted);
+    }
+    .footerGrid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      padding-top: 10px;
+    }
+    .fTitle{color: var(--text); font-weight:900; margin:0 0 10px; font-size:.95rem;}
+    .fLink{display:block; text-decoration:none; color: var(--muted); padding:6px 0; font-weight:700;}
+    .fLink:hover{color: var(--text);}
+    .footBottom{
+      display:flex; flex-wrap:wrap; gap:12px;
+      justify-content:space-between; align-items:center;
+      padding-top: 18px; margin-top: 18px;
+      border-top:1px solid var(--line);
+      font-size:.92rem;
+    }
+
+    /* Responsive: móvil/tablet */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr;}
+      .features{grid-template-columns: 1fr;}
+      .shots{grid-template-columns: repeat(2, 1fr);}
+      .footerGrid{grid-template-columns: repeat(2, 1fr);}
+      .navlinks{display:none;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <img src="./icon.png" alt="NavIA logo">
+        <span>NavIA</span>
+      </a>
+      <nav class="navlinks">
+        <a href="#funciones">Funciones</a>
+        <a href="#capturas">Capturas</a>
+        <a href="#descarga">Descarga</a>
+        <a href="#soporte">Soporte</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container heroGrid">
+        <div>
+          <div class="pill">🌊 Tiempo y mar en tu bolsillo</div>
+          <h1>Planifica tus salidas al mar con información clara y rápida.</h1>
+          <p class="lead">
+            NavIA te ayuda a planificar salidas al mar y actividades en la costa con información meteorológica y marítima:
+            viento, rachas, oleaje, GPS, favoritos, mapas y webcams.
+          </p>
+
+          <div class="cta" id="descarga">
+            <a class="btn primary" href="https://apps.apple.com/es/app/navia/id6757368026" target="_blank" rel="noopener">
+              Disponible en iOS → Descargar
+            </a>
+            <span class="btn disabled" aria-disabled="true">Android: próximamente</span>
+          </div>
+
+          <p style="margin:12px 0 0; color:var(--muted); line-height:1.55;">
+            Navega con más información: previsión meteorológica y condiciones marítimas, todo en un solo lugar.
+          </p>
+        </div>
+
+        <div class="phone">
+          <div class="tag">
+            <img src="./icon.png" alt="">
+            NavIA
+          </div>
+          <img src="./i_ini.png" alt="NavIA - resumen con viento y oleaje">
+        </div>
+      </div>
+    </section>
+
+    <section id="funciones">
+      <div class="container">
+        <h2 class="title">Funciones principales</h2>
+        <p class="sub">Lo esencial para decidir antes de salir, pensado para costa y actividades náuticas.</p>
+
+        <div class="grid features">
+          <div class="card"><h3>Previsión meteorológica</h3><p>Viento, rachas y variables clave.</p></div>
+          <div class="card"><h3>Condiciones marítimas</h3><p>Oleaje y datos relevantes para navegación y deportes.</p></div>
+          <div class="card"><h3>GPS</h3><p>Consulta con contexto en tu ubicación.</p></div>
+          <div class="card"><h3>Favoritos</h3><p>Acceso rápido a tus sitios habituales.</p></div>
+          <div class="card"><h3>Mapas</h3><p>Zonas y ubicaciones de un vistazo.</p></div>
+          <div class="card"><h3>Webcams</h3><p>Comprueba visualmente la zona cuando esté disponible.</p></div>
+        </div>
+
+        <p class="sub" style="margin-top:16px;">
+          Aviso: la información es orientativa y no sustituye fuentes oficiales ni el criterio del patrón.
+        </p>
+      </div>
+    </section>
+
+    <section id="capturas">
+      <div class="container">
+        <h2 class="title">Capturas</h2>
+        <p class="sub">Interfaz moderna y rápida para consultar lo importante en segundos.</p>
+
+        <div class="grid shots">
+          <div class="shot"><img src="./i_ini.png" alt="NavIA - inicio"></div>
+          <div class="shot"><img src="./i_map.png" alt="NavIA - mapa"></div>
+          <div class="shot"><img src="./i_detall.png" alt="NavIA - detalle"></div>
+          <div class="shot"><img src="./i_bruj.png" alt="NavIA - brújula"></div>
+          <div class="shot"><img src="./i_detall4.png" alt="NavIA - webcams"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="soporte">
+      <div class="container">
+        <h2 class="title">Soporte</h2>
+        <p class="sub">
+          Si necesitas ayuda, contacta con <a href="mailto:navia.soporte@gmail.com">navia.soporte@gmail.com</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footerGrid">
+        <div>
+          <p class="fTitle">NavIA</p>
+          <a class="fLink" href="#funciones">Funciones</a>
+          <a class="fLink" href="#capturas">Capturas</a>
+          <a class="fLink" href="#descarga">Descarga</a>
+        </div>
+
+        <div>
+          <p class="fTitle">Legal</p>
+          <a class="fLink" href="https://naviasoporte-ctrl.github.io/privacy/" target="_blank" rel="noopener">Privacidad</a>
+        </div>
+
+        <div>
+          <p class="fTitle">Ayuda</p>
+          <a class="fLink" href="https://naviasoporte-ctrl.github.io/support/" target="_blank" rel="noopener">Soporte</a>
+        </div>
+
+        <div>
+          <p class="fTitle">Contacto</p>
+          <a class="fLink" href="mailto:navia.soporte@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <div class="footBottom">
+        <span>© <span id="y"></span> NavIA</span>
+        <span style="opacity:.85;">Hecho para GitHub Pages</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
     }
 
     *{ box-sizing:border-box; }
