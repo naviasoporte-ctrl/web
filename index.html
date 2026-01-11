@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NavIA — Tiempo y mar en tu bolsillo</title>
   <meta name="description" content="NavIA te ayuda a planificar salidas al mar y actividades en la costa con información meteorológica y marítima en una interfaz clara y rápida." />
+
   <link rel="icon" href="./icon.png" />
 
-  <!-- Open Graph (opcional) -->
   <meta property="og:title" content="NavIA — Tiempo y mar en tu bolsillo" />
-  <meta property="og:description" content="Viento, rachas, oleaje, mapas y webcams. Todo claro y rápido." />
+  <meta property="og:description" content="Viento, rachas, oleaje, GPS, favoritos, mapas y webcams. Todo claro y rápido." />
   <meta property="og:type" content="website" />
 
   <style>
@@ -34,6 +34,7 @@
     }
     a{color:inherit}
     .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto;}
+
     header{
       position:sticky; top:0; z-index:20;
       background: rgba(255,255,255,.88);
@@ -51,7 +52,12 @@
     .navlinks a:hover{color: var(--text);}
 
     .hero{padding:56px 0 22px;}
-    .heroGrid{display:grid; grid-template-columns: 1.05fr .95fr; gap:28px; align-items:center;}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr; /* más espacio al texto, menos a la captura */
+      gap:28px;
+      align-items:center;
+    }
     .pill{
       display:inline-flex; gap:8px; align-items:center;
       border:1px solid var(--line);
@@ -61,25 +67,39 @@
     }
     h1{font-size: clamp(2.0rem, 3.4vw, 3.0rem); line-height:1.07; margin:14px 0 12px; letter-spacing:-.4px;}
     .lead{color:var(--muted); font-size:1.07rem; line-height:1.55; margin:0 0 18px; max-width: 62ch;}
-    .cta{display:flex; flex-wrap:wrap; gap:12px; align-items:center;}
-    .btn{
-      display:inline-flex; gap:10px; align-items:center; justify-content:center;
-      padding:12px 14px; border-radius:14px;
-      border:1px solid var(--line);
-      background:#fff;
-      text-decoration:none; font-weight:900;
-      box-shadow: 0 12px 26px rgba(10,30,50,.08);
-      transition: transform .15s ease;
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn.primary{
-      border: none;
-      color:#fff;
-      background: linear-gradient(90deg, var(--blue), var(--blue2));
-      box-shadow: 0 16px 35px rgba(22,119,255,.20);
-    }
-    .btn.disabled{opacity:.55; cursor:not-allowed; pointer-events:none}
 
+    /* Badges (App Store / Google Play) */
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-top: 6px;
+    }
+    .storeBadge{
+      display:inline-flex;
+      align-items:center;
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 12px 26px rgba(10,30,50,.08);
+      transition: transform .15s ease, box-shadow .15s ease;
+      cursor:pointer;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .storeBadge:hover{ transform: translateY(-1px); box-shadow: 0 16px 32px rgba(10,30,50,.12); }
+    .storeBadge img{
+      display:block;
+      height: 44px;       /* tamaño del badge */
+      width: auto;
+    }
+    .storeBadge.disabled{
+      opacity:.60;
+    }
+
+    /* Hero phone: más pequeño */
     .phone{
       border:1px solid var(--line);
       background: #fff;
@@ -87,6 +107,8 @@
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
+      max-width: 320px;   /* limita tamaño en escritorio */
+      margin-left: auto;  /* lo alinea a la derecha */
     }
     .phone .tag{
       position:absolute; top:12px; left:12px;
@@ -123,15 +145,13 @@
       border:1px solid var(--line);
       background:#fff;
       box-shadow: 0 10px 22px rgba(10,30,50,.06);
-      cursor: zoom-in;
     }
     .shot img{width:100%; height:100%; object-fit:cover; display:block;}
 
-    /* Footer estilo Apple-like, fondo blanco */
     footer{
       border-top: 1px solid var(--line);
       background:#fff;
-      padding: 26px 0 42px;
+      padding: 26px 0 34px;
       color: var(--muted);
     }
     .footerGrid{
@@ -144,16 +164,19 @@
     .fLink{display:block; text-decoration:none; color: var(--muted); padding:6px 0; font-weight:700;}
     .fLink:hover{color: var(--text);}
     .footBottom{
-      display:flex; flex-wrap:wrap; gap:12px;
-      justify-content:space-between; align-items:center;
-      padding-top: 18px; margin-top: 18px;
+      display:flex;
+      justify-content:center; /* centrado */
+      align-items:center;
+      padding-top: 18px;
+      margin-top: 18px;
       border-top:1px solid var(--line);
       font-size:.92rem;
+      text-align:center;
     }
 
-    /* Responsive: móvil/tablet */
     @media (max-width: 980px){
       .heroGrid{grid-template-columns: 1fr;}
+      .phone{max-width: 360px; margin: 0;} /* en móvil, centrado natural al bajar */
       .features{grid-template-columns: 1fr;}
       .shots{grid-template-columns: repeat(2, 1fr);}
       .footerGrid{grid-template-columns: repeat(2, 1fr);}
@@ -189,11 +212,16 @@
             viento, rachas, oleaje, GPS, favoritos, mapas y webcams.
           </p>
 
-          <div class="cta" id="descarga">
-            <a class="btn primary" href="https://apps.apple.com/es/app/navia/id6757368026" target="_blank" rel="noopener">
-              Disponible en iOS → Descargar
+          <div class="badges" id="descarga" aria-label="Descargas">
+            <!-- iOS badge (pon tu imagen) -->
+            <a class="storeBadge" href="https://apps.apple.com/es/app/navia/id6757368026" target="_blank" rel="noopener" aria-label="Descargar en App Store">
+              <img src="./badge-ios.png" alt="Download on the App Store">
             </a>
-            <span class="btn disabled" aria-disabled="true">Android: próximamente</span>
+
+            <!-- Android badge: “próximamente” (pon tu imagen) -->
+            <button class="storeBadge disabled" id="androidBadge" type="button" aria-label="Disponible próximamente en Google Play">
+              <img src="./badge-android.png" alt="Get it on Google Play (próximamente)">
+            </button>
           </div>
 
           <p style="margin:12px 0 0; color:var(--muted); line-height:1.55;">
@@ -201,7 +229,7 @@
           </p>
         </div>
 
-        <div class="phone">
+        <div class="phone" aria-label="Captura de la app">
           <div class="tag">
             <img src="./icon.png" alt="">
             NavIA
@@ -284,13 +312,17 @@
 
       <div class="footBottom">
         <span>© <span id="y"></span> NavIA</span>
-        <span style="opacity:.85;">Hecho para GitHub Pages</span>
       </div>
     </div>
   </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Android: mensaje de "próximamente"
+    document.getElementById("androidBadge").addEventListener("click", function(){
+      alert("Disponible próximamente en Android.");
+    });
   </script>
 </body>
 </html>
