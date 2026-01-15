@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NavIA — Tiempo y mar en tu bolsillo</title>
-  <meta name="description" content="NavIA te ayuda a planificar salidas al mar y actividades en la costa con información meteorológica y marítima en una interfaz clara y rápida." />
+  <title>NavIA — Tiempo, mar y salud en tu bolsillo</title>
+  <meta name="description" content="NavIA te ayuda a planificar salidas al mar y actividades en la costa con información de viento, oleaje, calidad del aire e indicadores de salud en una interfaz clara y rápida." />
 
   <link rel="icon" href="./icon.png" />
 
-  <meta property="og:title" content="NavIA — Tiempo y mar en tu bolsillo" />
-  <meta property="og:description" content="Viento, rachas, oleaje, GPS, favoritos, mapas y webcams. Todo claro y rápido." />
+  <meta property="og:title" content="NavIA — Tiempo, mar y salud en tu bolsillo" />
+  <meta property="og:description" content="Viento, rachas, oleaje, calidad del aire, indicadores de salud, GPS, favoritos, mapas y webcams. Todo claro y rápido." />
   <meta property="og:type" content="website" />
 
   <style>
@@ -138,13 +138,22 @@
     .card h3{margin:0 0 6px; font-size:1.05rem;}
     .card p{margin:0; color:var(--muted); line-height:1.5;}
 
-    .shots{grid-template-columns: repeat(5, 1fr); gap:12px;}
+    /* Capturas: ahora en carrusel horizontal desplazable */
+    .shots{
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      padding-bottom:4px;
+      scroll-snap-type:x mandatory;
+    }
     .shot{
       border-radius: 18px;
       overflow:hidden;
       border:1px solid var(--line);
       background:#fff;
       box-shadow: 0 10px 22px rgba(10,30,50,.06);
+      flex:0 0 190px; /* ancho aproximado de cada miniatura */
+      scroll-snap-align:start;
     }
     .shot img{width:100%; height:100%; object-fit:cover; display:block;}
 
@@ -180,7 +189,6 @@
       .heroGrid{grid-template-columns: 1fr;}
       .phone{max-width: 360px; margin: 0;} /* en móvil, centrado natural al bajar */
       .features{grid-template-columns: 1fr;}
-      .shots{grid-template-columns: repeat(2, 1fr);}
       .footerGrid{
         grid-template-columns: repeat(2, max-content);
         justify-content: center;
@@ -211,27 +219,26 @@
     <section class="hero">
       <div class="container heroGrid">
         <div>
-          <div class="pill">🌊 Tiempo y mar en tu bolsillo</div>
-          <h1>Planifica tus salidas al mar con información clara y rápida.</h1>
+          <div class="pill">🌊 Tiempo, mar y salud en tu bolsillo</div>
+          <h1>Planifica tus salidas al mar con información clara de tiempo, mar y aire.</h1>
           <p class="lead">
-            NavIA te ayuda a planificar salidas al mar y actividades en la costa con información meteorológica y marítima:
-            viento, rachas, oleaje, GPS, favoritos, mapas y webcams.
+            NavIA te ayuda a planificar salidas al mar y actividades en la costa con viento, rachas, oleaje, calidad del aire, indicadores de salud, GPS, favoritos, mapas y webcams, todo en una sola app.
           </p>
 
           <div class="badges" id="descarga" aria-label="Descargas">
-            <!-- iOS badge (pon tu imagen) -->
+            <!-- iOS badge -->
             <a class="storeBadge" href="https://apps.apple.com/es/app/navia/id6757368026" target="_blank" rel="noopener" aria-label="Descargar en App Store">
               <img src="./badge-ios.png" alt="Download on the App Store">
             </a>
 
-            <!-- Android badge: “próximamente” (pon tu imagen) -->
+            <!-- Android badge: “próximamente” -->
             <button class="storeBadge disabled" id="androidBadge" type="button" aria-label="Disponible próximamente en Google Play">
               <img src="./badge-android.png" alt="Get it on Google Play (próximamente)">
             </button>
           </div>
 
           <p style="margin:12px 0 0; color:var(--muted); line-height:1.55;">
-            Navega con más información: previsión meteorológica y condiciones marítimas, todo en un solo lugar.
+            Consulta en segundos el estado del mar, el tiempo, la calidad del aire y un panel de salud orientativo para decidir mejor antes de salir.
           </p>
         </div>
 
@@ -240,7 +247,7 @@
             <img src="./icon.png" alt="">
             NavIA
           </div>
-          <img src="./i_ini.png" alt="NavIA - resumen con viento y oleaje">
+          <img id="heroShot" src="./i_ini.png" alt="NavIA - resumen con viento, oleaje y salud">
         </div>
       </div>
     </section>
@@ -248,19 +255,39 @@
     <section id="funciones">
       <div class="container">
         <h2 class="title">Funciones principales</h2>
-        <p class="sub">Lo esencial para decidir antes de salir, pensado para costa y actividades náuticas.</p>
+        <p class="sub">
+          Lo esencial para decidir antes de salir, pensado para costa, navegación y cómo pueden influir el tiempo y el aire en tu confort.
+        </p>
 
         <div class="grid features">
-          <div class="card"><h3>Previsión meteorológica</h3><p>Viento, rachas y variables clave.</p></div>
-          <div class="card"><h3>Condiciones marítimas</h3><p>Oleaje y datos relevantes para navegación y deportes.</p></div>
-          <div class="card"><h3>GPS</h3><p>Consulta con contexto en tu ubicación.</p></div>
-          <div class="card"><h3>Favoritos</h3><p>Acceso rápido a tus sitios habituales.</p></div>
-          <div class="card"><h3>Mapas</h3><p>Zonas y ubicaciones de un vistazo.</p></div>
-          <div class="card"><h3>Webcams</h3><p>Comprueba visualmente la zona cuando esté disponible.</p></div>
+          <div class="card">
+            <h3>Tiempo y mar</h3>
+            <p>Viento, rachas, oleaje, mar de fondo y variables clave para tus salidas.</p>
+          </div>
+          <div class="card">
+            <h3>Salud e indicadores</h3>
+            <p>Presión, humedad, UV y calidad del aire con explicaciones orientativas sobre confort y respiratorio.</p>
+          </div>
+          <div class="card">
+            <h3>Mapas, GPS y coordenadas</h3>
+            <p>Mapas, posición actual y formatos de latitud/longitud y unidades ajustables.</p>
+          </div>
+          <div class="card">
+            <h3>Perfil y valoraciones</h3>
+            <p>Crea cuenta, guarda preferencias y envía valoraciones de la App cuando inicias sesión.</p>
+          </div>
+          <div class="card">
+            <h3>Favoritos</h3>
+            <p>Acceso rápido a tus puntos y zonas habituales para no perder tiempo buscando.</p>
+          </div>
+          <div class="card">
+            <h3>Webcams y datos curiosos</h3>
+            <p>Abre webcams de la zona en el navegador y descubre pequeños datos curiosos en las pantallas principales.</p>
+          </div>
         </div>
 
         <p class="sub" style="margin-top:16px;">
-          Aviso: la información es orientativa y no sustituye fuentes oficiales ni el criterio del patrón.
+          Aviso: la información es orientativa y no sustituye fuentes oficiales, el criterio del patrón ni el consejo de profesionales sanitarios.
         </p>
       </div>
     </section>
@@ -268,14 +295,19 @@
     <section id="capturas">
       <div class="container">
         <h2 class="title">Capturas</h2>
-        <p class="sub">Interfaz moderna y rápida para consultar lo importante en segundos.</p>
+        <p class="sub">
+          Interfaz moderna y rápida para consultar de un vistazo tiempo, mar, salud y calidad del aire. Desliza horizontalmente para ver más pantallas.
+        </p>
 
-        <div class="grid shots">
-          <div class="shot"><img src="./i_ini.png" alt="NavIA - inicio"></div>
-          <div class="shot"><img src="./i_map.png" alt="NavIA - mapa"></div>
-          <div class="shot"><img src="./i_detall.png" alt="NavIA - detalle"></div>
-          <div class="shot"><img src="./i_bruj.png" alt="NavIA - brújula"></div>
-          <div class="shot"><img src="./i_detall4.png" alt="NavIA - webcams"></div>
+        <div class="shots" aria-label="Capturas de la app">
+          <div class="shot"><img src="./i_ini.png" alt="NavIA - pantalla de inicio con resumen de tiempo y mar"></div>
+          <div class="shot"><img src="./i_map.png" alt="NavIA - mapa y localización"></div>
+          <div class="shot"><img src="./i_detall.png" alt="NavIA - detalle de previsión por horas"></div>
+          <div class="shot"><img src="./i_bruj.png" alt="NavIA - brújula y orientación"></div>
+          <div class="shot"><img src="./i_detall4.png" alt="NavIA - webcams de la zona"></div>
+          <!-- Puedes añadir más capturas aquí
+          <div class="shot"><img src="./i_salud.png" alt="NavIA - panel de salud y calidad del aire"></div>
+          -->
         </div>
       </div>
     </section>
@@ -317,7 +349,7 @@
       </div>
 
       <div class="footBottom">
-        <span>© <span id="y"></span> 2026 NavIA. Todos los derechos reservados. </span>
+        <span>© <span id="y"></span> 2026 NavIA. Todos los derechos reservados.</span>
       </div>
     </div>
   </footer>
@@ -329,6 +361,29 @@
     document.getElementById("androidBadge").addEventListener("click", function(){
       alert("Disponible próximamente en Android.");
     });
+
+    // Rotación automática de la imagen principal del hero
+    (function(){
+      var heroShots = [
+        { src: "./i_ini.png",   alt: "NavIA - pantalla de inicio con resumen de tiempo, mar y salud" },
+        { src: "./i_map.png",   alt: "NavIA - mapa y localización" },
+        { src: "./i_detall.png",alt: "NavIA - detalle de previsión por horas" },
+        { src: "./i_bruj.png",  alt: "NavIA - brújula y orientación" },
+        { src: "./i_detall4.png", alt: "NavIA - webcams de la zona" }
+        // Añade aquí más capturas si lo deseas
+        // { src: "./i_salud.png", alt: "NavIA - panel de salud y calidad del aire" }
+      ];
+
+      var index = 0;
+      var img = document.getElementById("heroShot");
+      if (!img) return;
+
+      setInterval(function(){
+        index = (index + 1) % heroShots.length;
+        img.src = heroShots[index].src;
+        img.alt = heroShots[index].alt;
+      }, 6000); // cambia cada 6 segundos
+    })();
   </script>
 </body>
 </html>
