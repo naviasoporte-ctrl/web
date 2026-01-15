@@ -143,8 +143,10 @@
       display:flex;
       gap:12px;
       overflow-x:auto;
+      overflow-y:hidden;
       padding-bottom:4px;
       scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling: touch; /* suaviza en iOS */
     }
     .shot{
       border-radius: 18px;
