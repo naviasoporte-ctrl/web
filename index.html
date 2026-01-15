@@ -300,14 +300,65 @@
         </p>
 
         <div class="shots" aria-label="Capturas de la app">
-          <div class="shot"><img src="./i_ini.png" alt="NavIA - pantalla de inicio con resumen de tiempo y mar"></div>
-          <div class="shot"><img src="./i_map.png" alt="NavIA - mapa y localización"></div>
-          <div class="shot"><img src="./i_detall.png" alt="NavIA - detalle de previsión por horas"></div>
-          <div class="shot"><img src="./i_bruj.png" alt="NavIA - brújula y orientación"></div>
-          <div class="shot"><img src="./i_detall4.png" alt="NavIA - webcams de la zona"></div>
-          <!-- Puedes añadir más capturas aquí
-          <div class="shot"><img src="./i_salud.png" alt="NavIA - panel de salud y calidad del aire"></div>
-          -->
+          <!-- Inicio / Login -->
+          <div class="shot">
+            <img src="./i_ini_ses.png" alt="NavIA - inicio de sesión">
+          </div>
+        
+          <!-- Home principal -->
+          <div class="shot">
+            <img src="./i_ini.png" alt="NavIA - pantalla de inicio con resumen de tiempo y mar">
+          </div>
+        
+          <!-- Mapa -->
+          <div class="shot">
+            <img src="./i_map.png" alt="NavIA - mapa con viento, oleaje y mar de fondo">
+          </div>
+        
+          <!-- Detalles / Indicadores -->
+          <div class="shot">
+            <img src="./i_detall.png" alt="NavIA - indicadores de salud y meteorología (calidad del aire, UV, etc.)">
+          </div>
+        
+          <div class="shot">
+            <img src="./i_detall2.png" alt="NavIA - detalle ampliado de indicadores (por ejemplo presión o calidad del aire)">
+          </div>
+        
+          <div class="shot">
+            <img src="./i_detall3.png" alt="NavIA - condiciones por horas (viento, oleaje y mar de fondo)">
+          </div>
+        
+          <div class="shot">
+            <img src="./i_detall4.png" alt="NavIA - webcams en vivo de la zona">
+          </div>
+        
+          <!-- Brújula -->
+          <div class="shot">
+            <img src="./i_bruj.png" alt="NavIA - brújula y orientación (viento, oleaje y mar de fondo)">
+          </div>
+        
+          <!-- Beaufort -->
+          <div class="shot">
+            <img src="./i_beauf.png" alt="NavIA - escala Beaufort del viento">
+          </div>
+        
+          <!-- Pantallas extra (más) -->
+          <div class="shot">
+            <img src="./i_mas.png" alt="NavIA - pantalla adicional de previsión y favoritos">
+          </div>
+        
+          <div class="shot">
+            <img src="./i_mas2.png" alt="NavIA - pantalla adicional de información marítima">
+          </div>
+        
+          <div class="shot">
+            <img src="./i_mas3.png" alt="NavIA - pantalla adicional con condiciones y webcams">
+          </div>
+        
+          <!-- Perfil -->
+          <div class="shot">
+            <img src="./i_perfil.png" alt="NavIA - perfil y configuración (unidades, coordenadas, embarcación)">
+          </div>
         </div>
       </div>
     </section>
@@ -365,13 +416,38 @@
     // Rotación automática de la imagen principal del hero
     (function(){
       var heroShots = [
-        { src: "./i_ini.png",   alt: "NavIA - pantalla de inicio con resumen de tiempo, mar y salud" },
-        { src: "./i_map.png",   alt: "NavIA - mapa y localización" },
-        { src: "./i_detall.png",alt: "NavIA - detalle de previsión por horas" },
-        { src: "./i_bruj.png",  alt: "NavIA - brújula y orientación" },
-        { src: "./i_detall4.png", alt: "NavIA - webcams de la zona" }
-        // Añade aquí más capturas si lo deseas
-        // { src: "./i_salud.png", alt: "NavIA - panel de salud y calidad del aire" }
+        // Inicio / Login
+        { src: "./i_ini_ses.png", alt: "NavIA - inicio de sesión" },
+    
+        // Home principal
+        { src: "./i_ini.png", alt: "NavIA - pantalla de inicio con resumen de tiempo y mar" },
+    
+        // Mapa
+        { src: "./i_map.png", alt: "NavIA - mapa con viento, oleaje y mar de fondo" },
+    
+        // Indicadores + salud
+        { src: "./i_detall.png", alt: "NavIA - indicadores de salud y meteorología (calidad del aire, UV, etc.)" },
+        { src: "./i_detall2.png", alt: "NavIA - detalle ampliado de indicadores (por ejemplo presión o calidad del aire)" },
+    
+        // Hora a hora / tablas
+        { src: "./i_detall3.png", alt: "NavIA - condiciones por horas (viento, oleaje y mar de fondo)" },
+    
+        // Webcams
+        { src: "./i_detall4.png", alt: "NavIA - webcams en vivo de la zona" },
+    
+        // Brújula
+        { src: "./i_bruj.png", alt: "NavIA - brújula y orientación (viento, oleaje y mar de fondo)" },
+    
+        // Beaufort
+        { src: "./i_beauf.png", alt: "NavIA - escala Beaufort del viento" },
+    
+        // Pantallas extra
+        { src: "./i_mas.png", alt: "NavIA - pantalla adicional de previsión y favoritos" },
+        { src: "./i_mas2.png", alt: "NavIA - pantalla adicional de información marítima" },
+        { src: "./i_mas3.png", alt: "NavIA - pantalla adicional con condiciones y webcams" },
+    
+        // Perfil
+        { src: "./i_perfil.png", alt: "NavIA - perfil y configuración (unidades, coordenadas, embarcación)" }
       ];
 
       var index = 0;
