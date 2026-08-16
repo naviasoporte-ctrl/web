@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+
+  "update": {
+    "enabled": true,
+
+    "content": {
+      "es": {
+        "title": "Nueva versión de navIA disponible",
+        "message": "Hay una nueva versión disponible con mejoras y correcciones. Te recomendamos actualizar navIA para utilizar la versión más reciente.",
+        "primaryButton": "Actualizar",
+        "secondaryButton": "Más tarde"
+      },
+
+      "en": {
+        "title": "A new version of navIA is available",
+        "message": "A new version with improvements and fixes is available. We recommend updating navIA to use the latest version.",
+        "primaryButton": "Update",
+        "secondaryButton": "Later"
+      }
+    },
+
+    "remindAfterDays": 1,
+
+    "ios": {
+      "latestVersion": "1.0.5",
+      "storeUrl": "https://apps.apple.com/es/app/navia/id6757368026"
+    },
+
+    "android": {
+      "latestVersion": "1.0.5",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.mowylibra.navia&pcampaignid=web_share"
+    }
+  },
+
+  "review": {
+    "enabled": true,
+    "minimumDaysInstalled": 7,
+    "minimumLaunches": 8,
+    "minimumDaysBetweenAttempts": 20,
+    "maxAttemptsPerInstall": 10
+  }
+}
