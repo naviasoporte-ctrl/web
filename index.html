@@ -771,7 +771,7 @@
     /* ---------------- SUPPORT ---------------- */
     .support-row{
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:repeat(3,1fr);
       gap:16px;
       margin-top:36px;
     }
@@ -810,8 +810,8 @@
 
     .footer-grid{
       display:grid;
-      grid-template-columns:1.5fr repeat(3,1fr);
-      gap:40px;
+      grid-template-columns:1.5fr repeat(4,1fr);
+      gap:34px;
     }
 
     .footer-brand{
@@ -882,8 +882,8 @@
       .bento-card.third{grid-column:span 6}
       .use-grid{grid-template-columns:1fr}
       .use-card{min-height:270px}
-      .footer-grid{grid-template-columns:1.4fr 1fr 1fr}
-      .footer-grid>div:last-child{grid-column:2}
+      .footer-grid{grid-template-columns:1.4fr repeat(3,1fr)}
+      .footer-grid>div:last-child{grid-column:auto}
     }
 
     @media(max-width:760px){
@@ -1253,6 +1253,12 @@
             <p>Cuéntanos cualquier duda, incidencia o idea para seguir mejorando navIA.</p>
             <a class="text-link" href="mailto:navia.soporte@gmail.com">navia.soporte@gmail.com →</a>
           </div>
+
+          <div class="support-card reveal">
+            <strong>Fuentes de información</strong>
+            <p>Consulta de forma general de dónde procede parte de la información meteorológica, marítima y costera mostrada por navIA.</p>
+            <a class="text-link" href="https://naviasoporte-ctrl.github.io/sources/" target="_blank" rel="noopener">Ver fuentes →</a>
+          </div>
         </div>
 
         <p style="margin:28px 0 0;color:var(--muted);font-size:.88rem;line-height:1.55;">
@@ -1288,6 +1294,11 @@
           <a class="footer-link" href="https://naviasoporte-ctrl.github.io/guide/" target="_blank" rel="noopener">Guía de uso</a>
           <a class="footer-link" href="https://naviasoporte-ctrl.github.io/support/" target="_blank" rel="noopener">Soporte</a>
           <a class="footer-link" href="mailto:navia.soporte@gmail.com">Contacto</a>
+        </div>
+
+        <div>
+          <p class="footer-title">Información</p>
+          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/sources/" target="_blank" rel="noopener">Fuentes de información</a>
         </div>
 
         <div>
