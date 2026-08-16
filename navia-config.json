@@ -39,5 +39,24 @@
     "minimumLaunches": 8,
     "minimumDaysBetweenAttempts": 20,
     "maxAttemptsPerInstall": 10
+  },
+
+  "inactivityNotifications": {
+    "enabled": true,
+    "firstAfterDays": 7,
+    "repeatEveryDays": 20,
+    "scheduledOccurrences": 24,
+  
+    "content": {
+      "es": {
+        "title": "¿Vas a salir al mar? 🌊",
+        "message": "Consulta las condiciones antes de salir con navIA."
+      },
+  
+      "en": {
+        "title": "Heading out to sea? 🌊",
+        "message": "Check the conditions before you go with navIA."
+      }
+    }
   }
 }
