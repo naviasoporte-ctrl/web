@@ -20,24 +20,24 @@
       }
     },
 
-    "remindAfterDays": 1,
+    "remindAfterDays": 0,
 
     "ios": {
-      "latestVersion": "1.0.5",
+      "latestVersion": "99.0.0",
       "storeUrl": "https://apps.apple.com/es/app/navia/id6757368026"
     },
 
     "android": {
-      "latestVersion": "1.0.5",
+      "latestVersion": "99.0.0",
       "storeUrl": "https://play.google.com/store/apps/details?id=com.mowylibra.navia&pcampaignid=web_share"
     }
   },
 
   "review": {
-    "enabled": true,
-    "minimumDaysInstalled": 7,
-    "minimumLaunches": 8,
-    "minimumDaysBetweenAttempts": 20,
+    "enabled": false,
+    "minimumDaysInstalled": 0,
+    "minimumLaunches": 1,
+    "minimumDaysBetweenAttempts": 0,
     "maxAttemptsPerInstall": 10
   }
 }
