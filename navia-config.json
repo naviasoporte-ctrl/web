@@ -23,12 +23,12 @@
     "remindAfterDays": 1,
 
     "ios": {
-      "latestVersion": "1.0.5",
+      "latestVersion": "1.0.6",
       "storeUrl": "https://apps.apple.com/es/app/navia/id6757368026"
     },
 
     "android": {
-      "latestVersion": "1.0.5",
+      "latestVersion": "1.0.6",
       "storeUrl": "https://play.google.com/store/apps/details?id=com.mowylibra.navia&pcampaignid=web_share"
     }
   },
