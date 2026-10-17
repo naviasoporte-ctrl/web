@@ -8,12 +8,14 @@
   <meta name="description" content="Viento, rachas, oleaje, mareas y avisos oficiales para navegar con seguridad. Incluye guía de nudos marineros, prioridades en el mar y escala Beaufort animadas." />
   <meta name="theme-color" content="#061523" />
 
-  <link rel="icon" href="./icon.png" />
+  <link rel="icon" type="image/png" sizes="any" href="https://naviasoporte-ctrl.github.io/web/icon.png?v=3" />
+  <link rel="shortcut icon" type="image/png" href="https://naviasoporte-ctrl.github.io/web/icon.png?v=3" />
+  <link rel="apple-touch-icon" href="https://naviasoporte-ctrl.github.io/web/icon.png?v=3" />
 
   <meta property="og:title" content="navIA — El mar, antes de salir" />
   <meta property="og:description" content="Tiempo, mar y costa en una sola app. Viento, oleaje, mareas, avisos, nudos marineros y mucho más." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./01_inicio.png" />
+  <meta property="og:image" content="https://naviasoporte-ctrl.github.io/web/01_inicio.png" />
 
   <style>
     :root{
@@ -31,7 +33,6 @@
       --shadow-soft:0 18px 45px rgba(2,22,35,.09);
       --radius:26px;
       --max:1180px;
-      --shot-ratio:1242/2688;
     }
 
     *{box-sizing:border-box}
@@ -45,7 +46,7 @@
       overflow-x:hidden;
     }
 
-    img{max-width:100%}
+    img{max-width:100%;height:auto}
     a{color:inherit}
     button{font:inherit}
     .container{width:min(var(--max), calc(100% - 42px));margin-inline:auto}
@@ -281,7 +282,7 @@
     }
 
     .store-badge:hover{transform:translateY(-3px)}
-    .store-badge img{display:block;height:43px;width:auto}
+    .store-badge img{display:block;height:43px !important;width:auto}
 
     .hero-note{
       margin-top:18px;
@@ -345,13 +346,13 @@
       overflow:hidden;
       border-radius:38px;
       background:#e9f2f6;
-      aspect-ratio:var(--shot-ratio);
+      aspect-ratio:1242 / 2688;
     }
 
     .phone-screen img{
       display:block;
       width:100%;
-      height:100%;
+      height:100% !important;
       object-fit:cover;
       transition:opacity .28s ease, transform .5s ease;
     }
@@ -448,6 +449,7 @@
 
     /* ---------------- COMMON ---------------- */
     section.content{padding:100px 0}
+    section[id],#descarga{scroll-margin-top:84px}
     .section-kicker{
       display:inline-flex;
       align-items:center;
@@ -664,7 +666,8 @@
     .learn-media img{
       display:block;
       width:100%;
-      aspect-ratio:var(--shot-ratio);
+      height:auto;
+      aspect-ratio:1242 / 2688;
       object-fit:cover;
       object-position:top;
       border-radius:24px 24px 0 0;
@@ -855,7 +858,8 @@
     .shot img{
       display:block;
       width:100%;
-      aspect-ratio:var(--shot-ratio);
+      height:auto;
+      aspect-ratio:1242 / 2688;
       object-fit:cover;
       border-radius:24px;
     }
@@ -1202,11 +1206,11 @@
           </p>
 
           <div class="hero-actions" id="descarga">
-            <a class="store-badge" href="https://apps.apple.com/es/app/navia/id6757368026" target="_blank" rel="noopener" aria-label="Descargar navIA en App Store">
+            <a class="store-badge" href="https://apps.apple.com/es/app/navia/id6757368026" aria-label="Descargar navIA en App Store">
               <img src="./badge-ios.png" alt="Descargar en App Store">
             </a>
 
-            <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.mowylibra.navia&pcampaignid=web_share" target="_blank" rel="noopener" aria-label="Descargar navIA en Google Play">
+            <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.mowylibra.navia&pcampaignid=web_share" aria-label="Descargar navIA en Google Play">
               <img src="./badge-android.png" alt="Disponible en Google Play">
             </a>
           </div>
@@ -1237,7 +1241,7 @@
 
           <div class="phone">
             <div class="phone-screen">
-              <img id="heroShot" src="./01_inicio.png" alt="Pantalla principal de navIA">
+              <img id="heroShot" src="./01_inicio.png" width="1242" height="2688" decoding="async" alt="Pantalla principal de navIA">
             </div>
           </div>
         </div>
@@ -1349,7 +1353,7 @@
         <div class="learn-grid">
           <article class="learn-card reveal">
             <div class="learn-media">
-              <div class="mini-phone"><img src="./07_nudo_as_de_guia.png" alt="Nudo as de guía con animación en navIA" loading="lazy"></div>
+              <div class="mini-phone"><img src="./07_nudo_as_de_guia.png" width="1242" height="2688" decoding="async" alt="Nudo as de guía con animación en navIA" loading="lazy"></div>
             </div>
             <div class="learn-body">
               <span class="new-pill">Nuevo</span>
@@ -1360,7 +1364,7 @@
 
           <article class="learn-card reveal">
             <div class="learn-media">
-              <div class="mini-phone"><img src="./13_prioridades_mar.png" alt="Prioridades en el mar en navIA" loading="lazy"></div>
+              <div class="mini-phone"><img src="./13_prioridades_mar.png" width="1242" height="2688" decoding="async" alt="Prioridades en el mar en navIA" loading="lazy"></div>
             </div>
             <div class="learn-body">
               <span class="new-pill">Nuevo</span>
@@ -1371,7 +1375,7 @@
 
           <article class="learn-card reveal">
             <div class="learn-media">
-              <div class="mini-phone"><img src="./12_escala_beaufort.png" alt="Escala Beaufort animada en navIA" loading="lazy"></div>
+              <div class="mini-phone"><img src="./12_escala_beaufort.png" width="1242" height="2688" decoding="async" alt="Escala Beaufort animada en navIA" loading="lazy"></div>
             </div>
             <div class="learn-body">
               <span class="new-pill">Nuevo</span>
@@ -1446,19 +1450,19 @@
 
         <div class="shots-wrap reveal">
           <div class="shots" id="shots">
-            <figure class="shot"><div class="shot-frame"><img src="./01_inicio.png" alt="navIA - pantalla principal" loading="lazy"></div><figcaption>Inicio</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./02_detalle_tiempo.png" alt="navIA - detalle del tiempo" loading="lazy"></div><figcaption>Detalle del tiempo</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./03_detalle_mar.png" alt="navIA - estado del mar" loading="lazy"></div><figcaption>Estado del mar</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./04_prevision.png" alt="navIA - previsión por horas" loading="lazy"></div><figcaption>Previsión por horas</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./11_mapa_prevision.png" alt="navIA - mapa de previsión" loading="lazy"></div><figcaption>Mapa de previsión</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./09_mareas.png" alt="navIA - mareas" loading="lazy"></div><figcaption>Mareas</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./08_brujula.png" alt="navIA - brújula" loading="lazy"></div><figcaption>Brújula</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./12_escala_beaufort.png" alt="navIA - escala Beaufort" loading="lazy"></div><figcaption>Escala Beaufort</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./05_curiosidades.png" alt="navIA - curiosidades del día" loading="lazy"></div><figcaption>Curiosidades del día</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./06_guia_nudos.png" alt="navIA - guía de nudos" loading="lazy"></div><figcaption>Guía de nudos</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./07_nudo_as_de_guia.png" alt="navIA - nudo as de guía" loading="lazy"></div><figcaption>Nudo paso a paso</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./13_prioridades_mar.png" alt="navIA - prioridades en el mar" loading="lazy"></div><figcaption>Prioridades en el mar</figcaption></figure>
-            <figure class="shot"><div class="shot-frame"><img src="./10_embarcacion.png" alt="navIA - ficha de la embarcación" loading="lazy"></div><figcaption>Tu embarcación</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./01_inicio.png" width="1242" height="2688" decoding="async" alt="navIA - pantalla principal" loading="lazy"></div><figcaption>Inicio</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./02_detalle_tiempo.png" width="1242" height="2688" decoding="async" alt="navIA - detalle del tiempo" loading="lazy"></div><figcaption>Detalle del tiempo</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./03_detalle_mar.png" width="1242" height="2688" decoding="async" alt="navIA - estado del mar" loading="lazy"></div><figcaption>Estado del mar</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./04_prevision.png" width="1242" height="2688" decoding="async" alt="navIA - previsión por horas" loading="lazy"></div><figcaption>Previsión por horas</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./11_mapa_prevision.png" width="1242" height="2688" decoding="async" alt="navIA - mapa de previsión" loading="lazy"></div><figcaption>Mapa de previsión</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./09_mareas.png" width="1242" height="2688" decoding="async" alt="navIA - mareas" loading="lazy"></div><figcaption>Mareas</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./08_brujula.png" width="1242" height="2688" decoding="async" alt="navIA - brújula" loading="lazy"></div><figcaption>Brújula</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./12_escala_beaufort.png" width="1242" height="2688" decoding="async" alt="navIA - escala Beaufort" loading="lazy"></div><figcaption>Escala Beaufort</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./05_curiosidades.png" width="1242" height="2688" decoding="async" alt="navIA - curiosidades del día" loading="lazy"></div><figcaption>Curiosidades del día</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./06_guia_nudos.png" width="1242" height="2688" decoding="async" alt="navIA - guía de nudos" loading="lazy"></div><figcaption>Guía de nudos</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./07_nudo_as_de_guia.png" width="1242" height="2688" decoding="async" alt="navIA - nudo as de guía" loading="lazy"></div><figcaption>Nudo paso a paso</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./13_prioridades_mar.png" width="1242" height="2688" decoding="async" alt="navIA - prioridades en el mar" loading="lazy"></div><figcaption>Prioridades en el mar</figcaption></figure>
+            <figure class="shot"><div class="shot-frame"><img src="./10_embarcacion.png" width="1242" height="2688" decoding="async" alt="navIA - ficha de la embarcación" loading="lazy"></div><figcaption>Tu embarcación</figcaption></figure>
           </div>
         </div>
       </div>
@@ -1475,10 +1479,10 @@
           </div>
 
           <div class="cta-buttons">
-            <a class="store-badge" href="https://apps.apple.com/es/app/navia/id6757368026" target="_blank" rel="noopener" aria-label="Descargar en App Store">
+            <a class="store-badge" href="https://apps.apple.com/es/app/navia/id6757368026" aria-label="Descargar en App Store">
               <img src="./badge-ios.png" alt="Descargar en App Store">
             </a>
-            <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.mowylibra.navia&pcampaignid=web_share" target="_blank" rel="noopener" aria-label="Descargar en Google Play">
+            <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.mowylibra.navia&pcampaignid=web_share" aria-label="Descargar en Google Play">
               <img src="./badge-android.png" alt="Disponible en Google Play">
             </a>
           </div>
@@ -1500,7 +1504,7 @@
           <div class="support-card reveal">
             <strong>Guía de uso</strong>
             <p>Consulta cómo funciona la app y saca más partido a sus principales herramientas.</p>
-            <a class="text-link" href="https://naviasoporte-ctrl.github.io/guide/" target="_blank" rel="noopener">Abrir guía →</a>
+            <a class="text-link" href="https://naviasoporte-ctrl.github.io/guide/">Abrir guía →</a>
           </div>
 
           <div class="support-card reveal">
@@ -1512,7 +1516,7 @@
           <div class="support-card reveal">
             <strong>Fuentes de información</strong>
             <p>Consulta de dónde procede la información meteorológica, marítima y costera que muestra navIA.</p>
-            <a class="text-link" href="https://naviasoporte-ctrl.github.io/sources/" target="_blank" rel="noopener">Ver fuentes →</a>
+            <a class="text-link" href="https://naviasoporte-ctrl.github.io/sources/">Ver fuentes →</a>
           </div>
         </div>
 
@@ -1546,19 +1550,19 @@
 
         <div>
           <p class="footer-title">Ayuda</p>
-          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/guide/" target="_blank" rel="noopener">Guía de uso</a>
-          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/support/" target="_blank" rel="noopener">Soporte</a>
+          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/guide/">Guía de uso</a>
+          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/support/">Soporte</a>
           <a class="footer-link" href="mailto:navia.soporte@gmail.com">Contacto</a>
         </div>
 
         <div>
           <p class="footer-title">Información</p>
-          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/sources/" target="_blank" rel="noopener">Fuentes de información</a>
+          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/sources/">Fuentes de información</a>
         </div>
 
         <div>
           <p class="footer-title">Legal</p>
-          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/privacy/" target="_blank" rel="noopener">Privacidad</a>
+          <a class="footer-link" href="https://naviasoporte-ctrl.github.io/privacy/">Privacidad</a>
         </div>
       </div>
 
